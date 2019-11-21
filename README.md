@@ -6,5 +6,5 @@ the accounts.txt and assets_history.txt are the result.
 
 # run
 first run a cli_wallet, import a test account and unlock the wallet.  
-then you need change the account of create_account.py and create_asset.py.   
+then you need change the account in the create_account.py and create_asset.py.   
 last run the two script.  
