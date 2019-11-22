@@ -526,15 +526,16 @@ def create_market_asset(_asset):
 
 
 
-def create_assets():
-    for _asset in user_assets:
-        create_user_asset(_asset)
-        get_asset(_asset)
-        
+def create_assets():  
+    
     for _asset in market_assets:
         create_market_asset(_asset)
         get_asset(_asset)
-
+        
+    for _asset in user_assets:
+        create_user_asset(_asset)
+        get_asset(_asset)
+      
 
 def save_account(str):
     if not os.path.exists(newfile):
