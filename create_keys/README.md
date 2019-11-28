@@ -10,3 +10,4 @@ the bps_brain_priv_keys.txt record the brain_priv keys.
 first update the chain-id and ws of the connect_cli_wallet.sh   
 then run it: ./connect_cli_wallet.sh a  
 last run it: python3 create_keys.py   
+
