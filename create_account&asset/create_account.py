@@ -10,64 +10,12 @@ headers = {"content-type": "application/json"}
 register_account_name = 'nicotest'
 newfile = "accounts.txt"
 accounts = [
-'cocos-root',
-'cocos-init0',
-'cocos-init1',
-'cocos-init2',
-'cocos-init3',
-'cocos-init4',
-'cocos-init5',
-'cocos-init6',
-'cocos-init7',
-'cocos-init8',
-'cocos-init9',
-'cocos-init10',
-'cocos1',
-'cocos2',
-'cocos3',
-'cocos4',
-'cocos5',
-'cocos6',
-'cocos7',
-'cocos8',
-'cocos9',
-'cocos0',
-'cocosa',
-'cocosb',
-'cocosc',
-'cocosd',
-'cocose',
-'cocosf',
-'cocosg',
-'cocosh',
-'cocosi',
-'cocosj',
-'cocosk',
-'cocosl',
-'cocosm',
-'cocosn',
-'cocoso',
-'cocosp',
-'cocosq',
-'cocosr',
-'cocoss',
-'cocost',
-'cocosu',
-'cocosv',
-'cocosw',
-'cocosx',
-'cocosy',
-'cocosz',
-'cocos-1',
-'cocos-2',
-'cocos-3',
-'cocos-4',
-'cocos-5',
-'cocos-6',
-'cocos-7',
-'cocos-8',
-'cocos-9',
-'cocos-0'
+'cocos67-root',
+'cocos67-init0',
+'cocos67-init0',
+'cocos67-init0',
+'cocos67-init3',
+'cocos67-init4'
 ]
 
 def get_account(name):
@@ -80,9 +28,11 @@ def get_account(name):
         }
         account_info = json.loads(requests.post(cli_wallet_url, data = json.dumps(body_relay), headers = headers).text)
         account_object = account_info['result']
+        print('>> get the account: {}\n'.format(account_object))
         return account_object
     except Exception as e:
         print(repr(e))
+        return None
 
 def suggest_brain_key():
     try:
@@ -101,6 +51,10 @@ def suggest_brain_key():
 
 #register = "nicotest"
 def register_account(register, new_account_name):
+    account_object = get_account(new_account_name)
+    if account_object != None:
+        print('>> occur error:  you hava regiter the account: {}\n'.format(new_account_name))
+        return
     owner_brain_key = suggest_brain_key()
     active_brain_key = suggest_brain_key()
     owner_pub_key = owner_brain_key['pub_key']   
@@ -116,6 +70,9 @@ def register_account(register, new_account_name):
         json.loads(requests.post(cli_wallet_url, data = json.dumps(body_relay), headers = headers).text)
         account_object = get_account(new_account_name)
 
+        if account_object == None:
+            print('>> occur error:  failed to regiter the account: {}\n'.format(new_account_name))
+            return
         save_result = {"name":new_account_name, "owner_pub_key":owner_pub_key, "owner_priv_key":owner_brain_key['wif_priv_key'],"active_pub_key":active_pub_key, "active_priv_key":active_brain_key['wif_priv_key']} 
         tmp = json.dumps(save_result)
         save_account(tmp)
