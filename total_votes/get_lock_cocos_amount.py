@@ -80,8 +80,8 @@ def get_total_votes():
             else:
                 witnesses_supporters_set.add(tmp)
 
-        print('\n>> witnesses_supporters_real_votes： {}'.format(witnesses_double_counts))
-        print('>> witnesses_total_votes：  {}'.format(witnesses_total_votes - witnesses_supporters_total_votes + witnesses_double_counts))
+        print('\n>> witnesses_supporters_real_votes： {}'.format(witnesses_supporters_total_votes - witnesses_double_counts))
+        print('>> witnesses_total_votes：  {}'.format(witnesses_total_votes + witnesses_supporters_total_votes - witnesses_double_counts))
 
         #-----committee去重-------
         committeees_supporters = []
@@ -102,9 +102,9 @@ def get_total_votes():
             else:
                 committeees_supporters_set.add(tmp)
 
-        print('\n>> committeees_supporters_real_votes： {}'.format(committeees_double_counts))
-        print('>> committeees_total_votes：  {}'.format(committeees_total_votes - committeees_supporters_total_votes + committeees_double_counts))
-        print('\n>> total_votes： {}\n'.format(committeees_total_votes - committeees_supporters_total_votes + committeees_double_counts + witnesses_total_votes - witnesses_supporters_total_votes + witnesses_double_counts))
+        print('\n>> committeees_supporters_real_votes： {}'.format(committeees_supporters_total_votes - committeees_double_counts))
+        print('>> committeees_total_votes：  {}'.format(committeees_total_votes + committeees_supporters_total_votes - committeees_double_counts))
+        print('\n>> total_votes： {}\n'.format(committeees_total_votes + committeees_supporters_total_votes - committeees_double_counts + witnesses_total_votes + witnesses_supporters_total_votes - witnesses_double_counts))
     except Exception as e:
         print(repr(e))
 
@@ -115,12 +115,12 @@ get_total_votes()
 example: 
 python3 .\get_lock_cocos_amount.py
 
->> witnesses_supporters_real_votes： 1506032000000
->> witnesses_total_votes：  121506032000000
+>> witnesses_supporters_real_votes： 25402585010400
+>> witnesses_total_votes：  172311202020800
 
->> committeees_supporters_real_votes： 396900000
->> committeees_total_votes：  70000396900000
+>> committeees_supporters_real_votes： 410500000
+>> committeees_total_votes：  70001217900000
 
->> total_votes： 191506428900000
+>> total_votes： 242312419920800
 
 '''
