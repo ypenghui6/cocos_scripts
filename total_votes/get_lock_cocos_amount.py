@@ -42,6 +42,8 @@ def get_total_votes():
         for witness in witness_info:
             witnesses_total_votes += int(witness['total_votes'])
             witnesses_vote_ids.append(witness['vote_id'])
+            # 打印witness详细数据
+            #print('>> witnesses:    {}, total_votes:    {}'.format(witness['witness_account'], witness['total_votes']))
         #包含重复print('\n>> witnesses_total_votes：  {}'.format(witnesses_total_votes))
 
 
@@ -58,6 +60,8 @@ def get_total_votes():
         for committee in committeees_info:
             committeees_total_votes += int(committee['total_votes'])
             committeees_vote_ids.append(committee['vote_id'])
+            # 打印committee详细数据
+            #print('>> committee:    {}, total_votes:    {}'.format(committee['committee_member_account'], committee['total_votes']))
         #包含重复print('>> committeees_total_votes： {}\n'.format(committeees_total_votes))
         #包含重复print('>> total_votes： {}\n'.format(committeees_total_votes + witnesses_total_votes))
 
@@ -80,8 +84,12 @@ def get_total_votes():
             else:
                 witnesses_supporters_set.add(tmp)
 
-        print('\n>> witnesses_supporters_real_votes： {}'.format(witnesses_supporters_total_votes - witnesses_double_counts))
-        print('>> witnesses_total_votes：  {}'.format(witnesses_total_votes - witnesses_double_counts))
+
+        witnesses_supporters_real_votes = format(round((witnesses_supporters_total_votes - witnesses_double_counts) / 100000), ',')
+        witnesses_total_votes_s =  format(round((witnesses_total_votes - witnesses_double_counts) / 100000), ',')
+
+        print('\n>> witnesses_supporters_real_votes： {}'.format(witnesses_supporters_real_votes))
+        print('>> witnesses_total_votes：  {}'.format(witnesses_total_votes_s))
 
         #-----committee去重-------
         committeees_supporters = []
@@ -102,9 +110,16 @@ def get_total_votes():
             else:
                 committeees_supporters_set.add(tmp)
                 
-        print('\n>> committeees_supporters_real_votes： {}'.format(committeees_supporters_total_votes - committeees_double_counts))
-        print('>> committeees_total_votes：  {}'.format(committeees_total_votes - committeees_double_counts))
-        print('\n>> total_votes： {}\n'.format(committeees_total_votes - committeees_double_counts + witnesses_total_votes - witnesses_double_counts))
+
+
+        committeees_supporters_real_votes = format(round((committeees_supporters_total_votes - committeees_double_counts) / 100000), ',')
+        committeees_total_votes_s = format(round((committeees_total_votes - committeees_double_counts) / 100000), ',')
+        total_votes_s =  format(round((committeees_total_votes - committeees_double_counts + witnesses_total_votes - witnesses_double_counts) / 100000), ',')
+
+
+        print('\n>> committeees_supporters_real_votes： {}'.format(committeees_supporters_real_votes))
+        print('>> committeees_total_votes：  {}'.format(committeees_total_votes_s))
+        print('\n>> total_votes： {}\n'.format(total_votes_s))
     except Exception as e:
         print(repr(e))
 
