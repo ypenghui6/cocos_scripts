@@ -131,13 +131,13 @@ example:
 python3 .\get_lock_cocos_amount.py
 
 
->> witnesses_supporters_real_votes： 25402585010400
->> witnesses_total_votes：  145402585010400
+>> witnesses_supporters_real_votes： 282,395,699
+>> witnesses_total_votes：  1,482,395,699
 
->> committeees_supporters_real_votes： 410500000
->> committeees_total_votes：  70000410500000
+>> committeees_supporters_real_votes： 4,105
+>> committeees_total_votes：  700,004,105
 
->> total_votes： 215402995510400
+>> total_votes： 2,182,399,804
 
 '''
 
