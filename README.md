@@ -1,21 +1,16 @@
 # cocos_scripts
 
-## create_account&asset  
+* create_account&asset  
+  创建资产和账户  
 
-创建资产和账户  
+* create_keys  
+  创建密钥对  
 
-## create_keys  
+* gas  
+  申领gas
 
-创建密钥对  
+* total_votes  
+  获取锁定总资产
 
-## gas  
-
-申领gas
-
-## total_votes
-
-获取锁定总资产
-
-## gas_collateral_model
-
-gas动态抵押模型算法
+* gas_collateral_model  
+  gas动态抵押模型算法
