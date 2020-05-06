@@ -3,13 +3,15 @@ import datetime
 import json
 import redis
 import requests
-import time
-import signal
-
 def send_msg(subject, message):
     tokenid = "33e90c73e8e4f7ef4640bdf547ae7ca1a2e9e0ecd2075c1d75b2c2e69bca4d35"
 #    tokenid = "3dea10d1d4370b1edc9c26c7b2812318ee5bf06c8b243a26352a10c8234ed2b0"
     url = "https://oapi.dingtalk.com/robot/send?access_token=" + tokenid
+
+    token = "00fe2e1e62a1db837133d5078fb5c5c4053c1383b20ac1b1d773458a096d9df9"
+    alert_address = "https://oapi.dingtalk.com/robot/send?access_token="+token
+
+
     header = {
         "Content-Type": "application/json",
         "charset": "utf-8"
@@ -29,34 +31,10 @@ def send_msg(subject, message):
     }
     sendData = json.dumps(data)
     # request = urllib2.Request(url, data=sendData, headers=header)
-    urlopen = requests.post(url=url,headers=header,data=sendData)
+    #urlopen = requests.post(url=url,headers=header,data=sendData)
+    urlopen = requests.post(url=alert_address,headers=header,data=sendData)
     return urlopen.text
 
-def set_timeout(num, callback):
-  def wrap(func):
-    def handle(signum, frame): # 收到信号 SIGALRM 后的回调函数，第一个参数是信号的数字，第二个参数是the interrupted stack frame.
-      raise RuntimeError
-  
-    def to_do(*args, **kwargs):
-      try:
-        signal.signal(signal.SIGALRM, handle) # 设置信号和回调函数
-        signal.alarm(num) # 设置 num 秒的闹钟
-        print('start alarm signal.')
-        r = func(*args, **kwargs)
-        print('close alarm signal.')
-        signal.alarm(0) # 关闭闹钟
-        return r
-      except RuntimeError as e:
-        callback()
-  
-    return to_do
-  
-  return wrap
-
-def after_timeout(): # 超时后的处理函数
-    print("timeout, pass...")
-
-@set_timeout(2, after_timeout) # 限时 2 秒
 def get_ws_data(chain_head_num, _chain_api_url):
     try:
         ws = create_connection(_chain_api_url)
@@ -69,6 +47,7 @@ def get_ws_data(chain_head_num, _chain_api_url):
         print("Receiving...")
         result1 =  ws.recv()
         ws.close()
+
         result1 =  json.loads(result1)
         result = result1["result"]
         result = result['head_block_number']
@@ -76,7 +55,6 @@ def get_ws_data(chain_head_num, _chain_api_url):
     except Exception as e:
         print(repr(e))     
         return 0  
-
 
 
 ws1 = create_connection("wss://api.cocosbcx.net")
@@ -170,7 +148,7 @@ r.set('block_num',max_num)
 ws.close()
 
 # test
-try_again.append({'ip': '47.111.249.169:8050', 'num': 6427715})
+#try_again.append({'ip': '47.244.211.84:8050', 'num': 6427715})
 if len(try_again):
     print("error message, try again...")
     print(try_again)
@@ -187,11 +165,8 @@ if len(try_again):
             num = get_ws_data("get_dynamic_global_properties", api_url)
             num = int(num)
             block_num=int(r.get('block_num'))
-            if num and abs(block_num - num)<2000:
-                break
             if num and count >= 3 and abs(block_num - num)>=2000:
                 send_msg("出块异常","获取出块节点异常%s,最大出块数%s,异常出块数%s"%(result,block_num,num))
-                print("==============error=======%s========================"%result)
-        time.sleep(3)
+                print("+++++==========error=======%s========================"%result)
     try_again = []
- 
+       
