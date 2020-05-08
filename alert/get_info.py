@@ -44,6 +44,7 @@ def get_ws_data(chain_head_num, _chain_api_url):
         result1 =  json.loads(result1)
         result = result1["result"]
         result = result['head_block_number']
+        print(result)
         return result
     except Exception as e:
         print(repr(e))       
@@ -62,4 +63,15 @@ peer_good_num = get_ws_data("get_dynamic_global_properties", chengdu_api_url)
 #warn(peer_error_num, peer_good_num)
 
 
-peer["ip"].find("47.244.211.84")!=-1
+#testurl = "ws://47.111.249.169:8049"
+#print(get_ws_data("get_dynamic_global_properties", testurl))
+
+#testurl = "ws://121.89.217.90:8049"
+#print(get_ws_data("get_dynamic_global_properties", testurl))
+
+#testurl = "ws://121.89.217.90:8049"
+#print(get_ws_data("get_dynamic_global_properties", testurl))
+
+testurl = "https://10.22.0.14:8049"
+#print(get_ws_data("get_dynamic_global_properties", testurl))
+print(get_data("get_dynamic_global_properties",[], testurl))

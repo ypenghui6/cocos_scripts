@@ -149,24 +149,74 @@ ws.close()
 
 # test
 #try_again.append({'ip': '47.244.211.84:8050', 'num': 6427715})
+#try_again.append({'ip': '47.56.120.111:8050', 'num': 6427715})
+#try_again.append({'ip': '121.89.217.90:8050', 'num': 6427715})
+#need try again: 47.52.188.115:8050 47.52.226.194:8050 10.22.0.14:8050 47.57.22.250:8050 47.56.120.111:8050
 if len(try_again):
     print("error message, try again...")
     print(try_again)
-    count = 0
-    i = 0
-    while i < 3:
-        i = i +1
-        for peer in try_again:
-            if peer["ip"].find("47.244.211.84") == -1:
-                continue
+    for peer in try_again:
+        count = 0
+        i = 0
+        while i < 3:
+            i = i +1
             count = count + 1
-            api_url = "ws://47.244.211.84:8701"
-            print(api_url)
-            num = get_ws_data("get_dynamic_global_properties", api_url)
-            num = int(num)
-            block_num=int(r.get('block_num'))
-            if num and count >= 3 and abs(block_num - num)>=2000:
-                send_msg("出块异常","获取出块节点异常%s,最大出块数%s,异常出块数%s"%(result,block_num,num))
-                print("+++++==========error=======%s========================"%result)
+            condition = peer["ip"].find("47.52.188.115") != -1 or peer["ip"].find("47.52.226.194") != -1 or peer["ip"].find("10.22.0.14") != -1\
+            or peer["ip"].find("47.57.22.250") != -1 or peer["ip"].find("47.56.120.111") != -1 or peer["ip"].find("47.244.211.84") != -1
+            if condition:
+                ip_port = peer["ip"].split(":")
+                api_url = "ws://" + ip_port[0] + ":8049"
+                if peer["ip"].find("47.244.211.84") != -1:
+                    api_url = "ws://47.244.211.84:8701"
+                print(api_url)
+                num = get_ws_data("get_dynamic_global_properties", api_url)
+                num = int(num)
+                block_num=int(r.get('block_num'))
+                if num and count >= 3 and abs(block_num - num)>=2000:
+                    send_msg("出块异常","获取出块节点异常%s,最大出块数%s,异常出块数%s"%(peer["ip"],block_num,num))
+                    print("+++++==========error=======%s========================"%peer["ip"])
+                    count = 0
+                    break
+                if num and count < 3 and abs(block_num - num)<2000:
+                    count = 0
+                    break
+            else:
+                num = int(peer["num"])                
+                block_num=int(r.get('block_num'))
+                if num and block_num and abs(block_num - num)>=4000:
+                    #--------------------check again start-------------------
+                    ws1 = create_connection("wss://api.cocosbcx.net")
+                    print("Sending 'Hello, World'...")
+                    data1={"id":4,"method":"call","params":[1,"network_node",[]]}
+                    ws1.send(json.dumps(data1))
+                    print("Sent")
+                    print("Receiving...")
+                    result1 =  ws1.recv()
+                    result1 =  json.loads(result1)
+                    app_id1 = result1["result"]
+                    data1={"id":0,"method":"call","params":[app_id1,"get_connected_peers",[]]}
+                    ws1.send(json.dumps(data1))
+                    result1 =  ws1.recv()
+                    result1 =  json.loads(result1)
+                    data1 = result1["result"]
+                    ip_list=[]
+                    ws1.close()
+                    ip = ""
+                    for block in data1:
+                        ip = block["host"]
+                        num = block["info"]["current_head_block_number"]
+                        num = int(num)
+                        if ip == peer["ip"] and abs(block_num - num)<=2000:
+                            count = 0
+                            break
+                    if ip == peer["ip"] and abs(block_num - num)<=2000:
+                        count = 0
+                        break
+                    #--------------------check again end-------------------
+                    if count >= 3:
+                        send_msg("出块异常","获取出块节点异常%s,最大出块数%s,异常出块数%s"%(peer["ip"],block_num,num))
+                        print("+++++==========error=======%s========================"%peer["ip"])
+                        count = 0
+
     try_again = []
        
