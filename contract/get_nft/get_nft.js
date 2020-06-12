@@ -1,9 +1,9 @@
 let _bcx=require('./bcx.min.js');
 
 let bcx=_bcx.createBCX({
-    default_ws_node:"ws://127.0.0.1:8649",
+    default_ws_node:"ws://test.cocosbcx.net",
     ws_node_list:[
-        {url:"ws://127.0.0.1:8649",name:"COCOS3.0节点1"},
+        {url:"ws://test.cocosbcx.net",name:"COCOS3.0节点1"},
     ],
     networks:[{
         core_asset:"COCOS",
@@ -14,12 +14,7 @@ let bcx=_bcx.createBCX({
     check_cached_nodes_data:false
 });
 
-var contractName = "contract.yphui.test67"
-
-var contractData = "function get_nft(hash_or_id)\n" +
-"    nft_assert = chainhelper:get_nft_asset(hash_or_id)\n" +
-"    chainhelper:log(nft_assert)\n" +
-"end"
+var contractName = "contract.cocosnft2020modified"
 
 /*
 var contractData = "function test()\n" +
@@ -139,7 +134,6 @@ async function callAndQueryContract(_parameter){
 
 async function consoleResult(){
     await passwordLogin()
-    await createAndQueryContract(contractName, contractData)
 
     await callAndQueryContract("4.2.65")
 

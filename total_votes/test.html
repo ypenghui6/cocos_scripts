@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<table border="0">	
+	<tr >
+		<td  rowspan="3"><input type='checkbox'></td>
+		<td  rowspan="3">number</td>
+		<td  rowspan="3">account</td>
+		<td  rowspan="3">scores</td>
+		 <td rowspan="3">w_or_c</td>
+		 <td class='supports' >	aaaa</td>
+		 <td class='supports_scores'> ddddd	</td>
+	</tr>
+	<tr >
+		 <td class='supports' >	bbbbb</td>
+		 <td class='supports_scores'> eeeeeeee	</td>
+	</tr>
+	<tr >
+
+		 <td class='supports' >	cccccc</td>
+		 <td class='supports_scores'> fffffffff	</td>
+	</tr>	
+	</table>
+
+	<table border="1">
+		<tr>
+		<th>星期一</th>
+		<th>星期二</th>
+		</tr>
+		<tr>
+		<td colspan="2">星期天</td>
+		</tr>
+	</table>
+
+
+
+<table border="1">
+  <tr>
+    <td rowspan=2>星期一</td>
+    <td>星期二</td>
+  </tr>
+  <tr>
+    <td>星期三</td>
+  </tr>
+
+  <tr>
+    <td rowspan=3>星期一</td>
+    <td>星期二</td>
+  </tr>
+  <tr>
+    <td>星期三</td>
+  </tr>  
+  <tr>
+    <td>星期三</td>
+  </tr>    
+</table>
+
+<table border="1">
+  <tr>
+    <td rowspan=1>星期一</td>
+    <td>星期二</td>
+  </tr>
+  <tr>
+    <td>星期三</td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+
+					        //查看全部数据
+					        // $("#checkAll").click(function(){
+					        //     if($(this).attr('data-flag')=='false'){
+					        //         if((L<=n)==true){
+					        //             return;
+					        //         }        
+					        //         for(var i=0;i< L-n;i++){
+						       //          str=trStr.replace("{number}",i+1);						    			  
+						        //          str=str.replace("{account}",data[i][0][2]);
+
+						       //          str=str.replace("{scores}",data[i][0][3]);
+						       //          str=str.replace("{w_or_c}",data[i][0][4]);
+						       //          var rowspans = data[i][1].length;
+						       //          str=str.replace(new RegExp("rowspan_values","gm"),rowspans);
+						       //          if(rowspans>=1){
+						       //          	str=str.replace("{supports}",data[i][1][0][3]);
+						       //          	str=str.replace("{supports_scores}",data[i][1][0][4]);
+						       //       	}else{
+						       //          	str=str.replace("{supports}", "&ensp;");
+						       //          	str=str.replace("{supports_scores}","&ensp;");				             		
+						       //       	}
+
+						       //       	if(rowspans>1){
+							      //           for(var j=1;j<rowspans;j++){
+							      //           	str1=trStr1.replace("{supports}",data[i][1][j][3]);
+							      //           	str1=str1.replace("{supports_scores}",data[i][1][j][4]);
+							      //           	str=trStr+str1
+							      //           }				                
+						       //          }
+					        //             $("#open").before(str);    
+					        //         }
+					        //         $("#open").hide();
+					        //         $(this).text('部分显示');
+					        //         $(this).attr('data-flag',true);            
+					        //     }else if($(this).attr('data-flag')=='true'){
+					        //         $('#thead').nextUntil('#open').remove();
+					        //         $("#open").show();
+					        //         $(this).text('显示全部');
+					        //         $(this).attr('data-flag',false);    
+					        //     }
+					        // });

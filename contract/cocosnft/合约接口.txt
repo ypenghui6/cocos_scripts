@@ -1,0 +1,92 @@
+一、合约接口变动
+init				--变动
+mine_card_nft       --删除
+mine_pissa_nft      --删除
+mine_nft 			--新增，合并mine_pissa_nft和mine_card_nft
+set_product_prices	--不变
+set_times 			--新增
+make_reservation    --变动
+make_order          --不变
+deliver_card_nft 	--变动
+redeem_pissa        --变动
+close               --不变
+
+二、现有合约接口
+1.初始化配置 				--变动，删除world_view
+--[[ 初始化配置
+参数:
+   string		 payee: 收款账户
+   string		 resrv_open_time: 预约开放时间，格式为 %Y-%m-%dT%H:%M:%S
+   string		 resrv_close_time: 预约关闭时间，格式为 %Y-%m-%dT%H:%M:%S
+   string		 order_open_time: 下单开放时间，格式为 %Y-%m-%dT%H:%M:%S
+   string		 order_close_time: 下单关闭时间，格式为 %Y-%m-%dT%H:%M:%S
+   string		 redeem_open_time: 披萨兑换开放时间，格式为 %Y-%m-%dT%H:%M:%S
+   string		 redeem_close_time：披萨兑换关闭时间，格式为 %Y-%m-%dT%H:%M:%S
+--]]
+init(payee, resrv_open_time, resrv_close_time, order_open_time, order_close_time, redeem_open_time, redeem_close_time)
+
+2.批量铸造NFT 资产            --新增，增加world_view、nft_logo、for_bounty、for_online、for_reservations、for_times
+--[[ 批量铸造 NFT 资产
+参数:
+    string       world_view: 世界观             				
+    string       nft_logo: 如 pissa             				
+    int          count: 数量                    				
+    json string  base_describe: 基本描述（和原有类型保持一致）       				
+    boolean      for_bounty: 是否用于bounty     				
+    boolean      for_online: 是否线上           				
+    boolean      for_reservations: 是否需要预定				
+    boolean      for_times: 是否可以购买多个，默认只能买一个 
+--]]
+mine_nft(world_view, nft_logo, count, base_describe, for_bounty, for_online, for_reservations, for_times)
+
+3.设置产品价格				--未变动
+--[[ 设置产品价格
+参数:
+   json string   price_setting_json: 价格配置json，如 {"pissa":1, "${card_type}":5} 表示 pissa 价格为 1 个 COCOS...
+--]]
+set_product_prices(price_setting_json)
+
+4.设置时间					--变动，新增接口
+--[[ 设置时间
+参数:
+   json string  times_setting_json: 时间配置json，如 {"order_close_time":"2020-06-22T04:00:00", "order_open_time":"2020-06-08T02:00:00"...} 
+--]]
+set_times(times_setting_json)
+
+5.预约购买 					--变动，增加product_type
+--[[ 预约购买
+参数: 
+   string 		product_type (nft_logo)
+--]]
+make_reservation(product_type)
+
+6.下订单购买 NFT 			--未变动
+--[[ 下订单购买 NFT
+参数:
+	string 		product_type, 产品类型如 pissa (nft_logo)
+--]]
+make_order(product_type)
+
+7.线上发货					--变动，增加for_bounty
+--[[ 卡密订单发货   线上发货
+参数:
+   string 		card_type: 卡密类型 (nft_logo)
+   string 		nft_asset_id: NFT 资产的 id
+   json string  encrypted_memo: 加密后的memo信息
+   boolean		for_bounty: 是否bounty渠道
+--]]
+deliver_card_nft(card_type,nft_asset_id,encrypted_memo,for_bounty)
+
+8.线下发货					--变动，增加product_type
+--[[ 兑换披萨    线下发货
+参数:
+   string 		pissa_nft_id: 披萨 NFT 资产 id
+   string 		product_type: 如pissas
+--]]
+redeem_pissa(pissa_nft_id,product_type)
+
+9.关闭交易市场				--未变动
+--[[ 关闭交易市场
+参数:无
+--]]
+close()

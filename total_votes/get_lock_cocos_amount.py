@@ -54,7 +54,7 @@ def get_total_votes():
             committeees_ids.append(committee[1])
         #print(witnesses_ids)
         committeees_info = get_data("get_committee_members", [committeees_ids])
-        #print(witness_info)
+        print(committeees_info)
         committeees_total_votes = 0
         committeees_vote_ids = []
         for committee in committeees_info:
