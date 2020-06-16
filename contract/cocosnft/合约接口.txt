@@ -43,6 +43,7 @@ mine_nft(world_view, nft_logo, count, base_describe, for_bounty, for_online, for
 --[[ 设置产品价格
 参数:
    json string   price_setting_json: 价格配置json，如 {"pissa":1, "${card_type}":5} 表示 pissa 价格为 1 个 COCOS...
+	pissa对应铸币的时候的nft_logo
 --]]
 set_product_prices(price_setting_json)
 
@@ -56,21 +57,21 @@ set_times(times_setting_json)
 5.预约购买 					--变动，增加product_type
 --[[ 预约购买
 参数: 
-   string 		product_type (nft_logo)
+   string 		product_type (对应铸币的时候nft_logo)
 --]]
 make_reservation(product_type)
 
 6.下订单购买 NFT 			--未变动
 --[[ 下订单购买 NFT
 参数:
-	string 		product_type, 产品类型如 pissa (nft_logo)
+	string 		product_type, 产品类型如 pissa (对应铸币的时候nft_logo)
 --]]
 make_order(product_type)
 
 7.线上发货					--变动，增加for_bounty
 --[[ 卡密订单发货   线上发货
 参数:
-   string 		card_type: 卡密类型 (nft_logo)
+   string 		card_type: 卡密类型 (对应铸币的时候nft_logo)
    string 		nft_asset_id: NFT 资产的 id
    json string  encrypted_memo: 加密后的memo信息
    boolean		for_bounty: 是否bounty渠道

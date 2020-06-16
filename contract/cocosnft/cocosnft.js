@@ -1,4 +1,4 @@
-let _bcx=require('./bcx.min.js');
+let _bcx=require('./bcx.node.js');
 
 let bcx=_bcx.createBCX({
     default_ws_node:"ws://test.cocosbcx.net",
@@ -233,7 +233,7 @@ async function consoleResult(){
     //for test pissa datas
     await passwordLogin("5JygARc1DFi2TfepvUKf2S2CMf5MEEiLunzh5n2notpjtK2YkVX")
     await createAndQueryContract(contractName, contractData)
-    await callAndQueryContract("mine_nft", ['cocosnft2020','pissa',60,'{"name":"披萨2020限量款","icon":"http://cardworld.cocosbcx.net/image/pizza_limited.png","intro":"可通过参加Cocos-BCX社群活动，卡密中心抢购活动以及加密骑士团游戏活动获得，可兑换为实体披萨，价值RMB100元，口味随机。","product_code":"pissa"}',false,false,false,false])
+    await callAndQueryContract("mine_nft", ['cocosnft2020','NFT2020',100,'{"name":"粽子礼盒","icon":"","intro":"","product_code":"NFT2020"}',true,false,false,true])
 
 }
 
