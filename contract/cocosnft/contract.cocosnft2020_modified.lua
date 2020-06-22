@@ -608,6 +608,10 @@ end
     返回计数，如果不存在则为0
 --]]
 func_array_has_item=function(arr,item)
+    if not arr then
+        return false
+    end
+
     for index, value in pairs(arr) do
         if value == item then
             return true
