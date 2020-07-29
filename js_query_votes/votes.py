@@ -24,8 +24,8 @@ DAY = 1
 IS_UPDATE_TODAY = ""
 #cli_wallet_url = "http://api.cocosbcx.net"
 headers = {"content-type": "application/json"}
-#chain_api_url = "https://test.cocosbcx.net"  
-chain_api_url = "https://api.cocosbcx.net"  
+chain_api_url = "https://test.cocosbcx.net"  
+# chain_api_url = "https://api.cocosbcx.net"  
 
 FILE_LOCK = '/lock'
 account_names = {}
@@ -63,6 +63,8 @@ def get_data(witness_or_committee, params):
 
 
 if __name__ == '__main__':
-    infos = get_data("lookup_vote_ids", [["1:0"]])
+    infos = get_data("lookup_vote_ids", [["0:12","0:13","0:14","0:15","0:16","1:1","0:18","0:19"]])
     print(infos)
 
+
+      

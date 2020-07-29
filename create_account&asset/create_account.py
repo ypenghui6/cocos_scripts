@@ -5,7 +5,7 @@ import requests
 import os
 
 #cli_wallet_url = "http://0.0.0.0:8048"
-cli_wallet_url = "http://0.0.0.0:8047"
+cli_wallet_url = "http://0.0.0.0:8099"
 headers = {"content-type": "application/json"}
 register_account_name = 'nicotest'
 newfile = "accounts.txt"
