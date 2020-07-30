@@ -19,6 +19,10 @@ unlock password
 ```
 import_key accountA private_key
 ```
+## 目录说明
+change_memo.py   运行脚本
+change_memo.txt  运行结果
+config.cfg       配置
 
 ## 配置config
 
