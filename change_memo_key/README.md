@@ -5,7 +5,7 @@
 
 ## 前期准备
 
-使用cli_wallet 连接网络，并开启RPC端口
+使用cli_wallet 连接网络，并开启RPC端口127.0.0.1:8099
 ```
 ./cli_wallet --chain-id '' -s wss://test.cocosbcx.net -r 127.0.0.1:8099
 ```
