@@ -19,6 +19,9 @@ unlock password
 ```
 import_key accountA private_key
 ```
+
+[cli_wallet使用说明文档](https://cocosbcx.readthedocs.io/zh_CN/latest/mainnet/node.html#cli-wallet)
+
 ## 目录说明
 change_memo.py   运行脚本  
 change_memo.txt  运行结果  
