@@ -1,0 +1,37 @@
+change memo begin......
+
+>> get_account
+ {'active': {'weight_threshold': 1, 'account_auths': [], 'key_auths': [['COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 1]], 'address_auths': []}, 'name': 'vote2test1', 'id': '1.2.248325', 'asset_locked': {'vote_for_committee': {'amount': 600, 'asset_id': '1.3.0'}, 'contract_lock_details': [], 'locked_total': [['1.3.0', 2600]], 'vote_for_witness': {'amount': 2000, 'asset_id': '1.3.0'}}, 'options': {'memo_key': 'COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 'extensions': [], 'votes': ['1:1', '1:2', '1:3', '1:4', '1:5', '0:11', '0:12', '0:13', '0:14', '0:15', '0:16', '0:17', '0:18', '0:19', '0:20', '0:21']}, 'registrar': '1.2.16', 'owner': {'weight_threshold': 1, 'account_auths': [], 'key_auths': [['COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 1]], 'address_auths': []}, 'membership_expiration_date': '1970-01-01T00:00:00', 'statistics': '2.6.248325', 'cashback_vote': '1.13.1046'}
+
+>> begin_builder_transaction
+ 21
+
+>> add_operation_to_builder_transaction
+ None
+
+>> sign_builder_transaction
+ ['2e3eefe210f12a944c3e1d68a38e67dcf6444160aee500b2f8e0fd34e9948991', {'signatures': ['1f3ee0bb3f403439d13e7f9039cf14e931dc7e537e0526c45dcecadb0109d530fc5d0cd0198fe8e63c3143c20cc55a454b6c3cec48eb8ed8a7a22c155187e0f5e2'], 'expiration': '2020-07-30T11:51:38', 'operations': [[6, {'new_options': {'memo_key': 'COCOS72QWc65vb7jdwZGbiwtvX69Xh9sb76oP3gRovmRFz9M2wGmN99', 'extensions': [], 'votes': ['1:1', '1:2', '1:3', '1:4', '1:5', '0:11', '0:12', '0:13', '0:14', '0:15', '0:16', '0:17', '0:18', '0:19', '0:20', '0:21']}, 'extensions': {}, 'account': '1.2.248325'}]], 'ref_block_num': 12259, 'ref_block_prefix': 1134487354, 'extensions': []}]
+
+change memo success......
+
+change memo begin......
+
+>> suggest_brain_key
+ {'address_info': 'COCOSFhvDZcDVrEpgypXcfrntDeTyr7Vj3pnYt', 'pub_key': 'COCOS5G7uWRGbxq6iy9xF5DdbtKQomCkvyJuTe8iLNk5Pj29hxssMTp', 'brain_priv_key': 'UNROOST AGNATIC BALANIC MALISM MOOTH BRYONY MONA CHANTER HAKO PHALLIN PUPULO ABAISER RINGED FALSIE TARTRYL HOGLING', 'wif_priv_key': '5KNHdjQAHN9mMzuqGXNYWPLHi2mvUbq9bV2T5NqkuD4cHEFAEd8'}
+
+>> memo_key: COCOS5G7uWRGbxq6iy9xF5DdbtKQomCkvyJuTe8iLNk5Pj29hxssMTp
+
+>> get_account
+ {'name': 'vote2test1', 'active': {'address_auths': [], 'account_auths': [], 'key_auths': [['COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 1]], 'weight_threshold': 1}, 'owner': {'address_auths': [], 'account_auths': [], 'key_auths': [['COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 1]], 'weight_threshold': 1}, 'options': {'memo_key': 'COCOS6piiTtfBDwESxpm67EpFtRuoWE2tXxiwnrG23DbLQfD26ucpHR', 'extensions': [], 'votes': ['1:1', '1:2', '1:3', '1:4', '1:5', '0:11', '0:12', '0:13', '0:14', '0:15', '0:16', '0:17', '0:18', '0:19', '0:20', '0:21']}, 'cashback_vote': '1.13.1046', 'statistics': '2.6.248325', 'membership_expiration_date': '1970-01-01T00:00:00', 'asset_locked': {'vote_for_witness': {'asset_id': '1.3.0', 'amount': 2000}, 'locked_total': [['1.3.0', 2600]], 'vote_for_committee': {'asset_id': '1.3.0', 'amount': 600}, 'contract_lock_details': []}, 'registrar': '1.2.16', 'id': '1.2.248325'}
+
+>> begin_builder_transaction
+ 22
+
+>> add_operation_to_builder_transaction
+ None
+
+>> sign_builder_transaction
+ ['15254c25ce8256b3c13c22329142f396630078fe3d460a21db6a5890ab83710f', {'signatures': ['2013a9217017d934d646a97d1b217e17431a0caadff676cb0227331da25999cecf03ab6d2e47fd87144a4986accd66db44fc183ae9027088cd53e39625e671d6cc'], 'ref_block_num': 12292, 'operations': [[6, {'extensions': {}, 'account': '1.2.248325', 'new_options': {'memo_key': 'COCOS5G7uWRGbxq6iy9xF5DdbtKQomCkvyJuTe8iLNk5Pj29hxssMTp', 'extensions': [], 'votes': ['1:1', '1:2', '1:3', '1:4', '1:5', '0:11', '0:12', '0:13', '0:14', '0:15', '0:16', '0:17', '0:18', '0:19', '0:20', '0:21']}}]], 'extensions': [], 'ref_block_prefix': 197797863, 'expiration': '2020-07-30T11:52:50'}]
+
+change memo success......
+
