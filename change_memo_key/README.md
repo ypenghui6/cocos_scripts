@@ -3,7 +3,7 @@
 
 更改memo key Demo
 
-原理：  
+## 原理：  
 通过cli_wallet RPC API实现更改memo key。
 
 cli_wallet API:  
