@@ -3,6 +3,14 @@
 
 更改memo key Demo
 
+原理：  
+通过cli_wallet RPC API实现更改memo key。
+
+cli_wallet API:  
+begin_builder_transaction  
+add_operation_to_builder_transaction    
+sign_builder_transaction    
+
 ## 前期准备
 
 使用cli_wallet 连接网络，并开启RPC端口127.0.0.1:8099
